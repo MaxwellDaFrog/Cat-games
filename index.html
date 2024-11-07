@@ -29,26 +29,6 @@
             width: 300px;
             border: 5px solid #333;
         }
-
-        /* Style for the reset button (hidden initially) */
-        #resetButton {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        #resetButton:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
@@ -83,7 +63,7 @@
         <img src="Nyehehe.jpg" alt="Nyehehe image" class="cat-image" onclick="checkAnswer('Nyehehe.jpg')">
         <img src="Plush.jpg" alt="Plush image" class="cat-image" onclick="checkAnswer('Plush.jpg')">
         <img src="round.jpg" alt="Round image" class="cat-image" onclick="checkAnswer('round.jpg')">
-        <img src="uhhh.jpg" alt="Uhhh image" class="cat-image" onclick="checkAnswer('uhhh.jpg')">
+        <img src="uhhh.jpg" alt="Uhhh image" class="cat-image" onclick="checkAnswer('uhhh,jpg')">
         <img src="whar.jpg" alt="whar image" class="cat-image" onclick="checkAnswer('whar.jpg')">
         <img src="wild.jpg" alt="wild image" class="cat-image" onclick="checkAnswer('wild.jpg')">
         <img src="yehawpunch.jpg" alt="yehawpunch image" class="cat-image" onclick="checkAnswer('yehawpunch.jpg')">
@@ -103,12 +83,9 @@
 
     <!-- Audio for wrong answer (plays once when wrong) -->
     <audio id="wrongAudio">
-        <source src="Spongebob Boowomp Sound Effect.mp3" type="audio/mp3">
+        <source src="Spongebob Boowomp Sound Effect.mp3" type="audio/mp3"> <!-- Replace with your own wrong sound -->
         Your browser does not support the audio element.
     </audio>
-
-    <!-- Reset Button -->
-    <button id="resetButton" onclick="resetGame()">Play Again</button>
 
     <script>
         // List of image filenames
@@ -126,8 +103,8 @@
             'pluh.jpg',
             'Nyehehe.jpg',
             'Monstercat.jpg',
-            'hehe.jpg',
-            'bikerkitty.jpg',
+            'hehe-jpg',
+            'bikerkitty,jpg',
             'blehh.jpg',
             'draank.jpg',
             'for.jpg',
@@ -136,9 +113,9 @@
             'hampther.jpg',
             'huh.jpg',
             'magic.jpg',
-            'Nyehehe.jpg',
+            'Nyehehe',
             'Plush.jpg',
-            'round.jpg',
+            'round-jpg',
             'uhhh.jpg',
             'whar.jpg',
             'wild.jpg',
@@ -166,7 +143,18 @@
                 
                 // Play the success audio
                 audio.play();
-
-                // Show the reset button
-                document.getElementById('resetButton').style.display = 'block';
+            } else {
+                // User clicked the wrong image
+                document.getElementById('feedbackMessage').textContent = "Nope, not this one! 😔";
+                document.getElementById('feedbackImage').src = 'no.jpg';  // Change this to your "nope" image
+                
+                // Play the wrong answer sound
+                wrongAudio.play();
             }
+
+            // Show the feedback
+            document.getElementById('feedback').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
